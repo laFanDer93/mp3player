@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.shamilusoyan.mp3.Mp3GUI">
+  <grid id="27dc6" binding="panel1" default-binding="true" layout-manager="BorderLayout" hgap="0" vgap="0">
+    <constraints>
+      <xy x="20" y="20" width="550" height="560"/>
+    </constraints>
+    <properties>
+      <background color="-12828863"/>
+      <foreground color="-263937"/>
+      <maximumSize width="550" height="560"/>
+      <minimumSize width="550" height="560"/>
+      <name value=""/>
+      <preferredSize width="550" height="560"/>
+    </properties>
+    <border type="none" title=""/>
+    <children>
+      <grid id="87ed0" binding="jMenuPanel" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="0">
+        <constraints border-constraint="North"/>
+        <properties>
+          <background color="-4671813"/>
+          <focusable value="false"/>
+          <foreground color="-1316626"/>
+          <maximumSize width="100" height="40"/>
+          <name value="xc"/>
+        </properties>
+        <border type="none" title=""/>
+        <children>
+          <grid id="c5147" class="javax.swing.JMenuBar" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="0">
+            <constraints/>
+            <properties>
+              <autoscrolls value="false"/>
+              <background color="-1316626"/>
+              <borderPainted value="true"/>
+            </properties>
+            <border type="empty"/>
+            <children>
+              <grid id="b684e" class="javax.swing.JMenu" binding="menuFile" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+                <constraints/>
+                <properties>
+                  <background color="-1316626"/>
+                  <foreground color="-16777216"/>
+                  <text value="File"/>
+                </properties>
+                <border type="empty"/>
+                <children>
+                  <component id="cd705" class="javax.swing.JMenuItem" binding="menuOpenPlaylist">
+                    <constraints/>
+                    <properties>
+                      <label value="Open playlist"/>
+                    </properties>
+                  </component>
+                  <component id="20bbb" class="javax.swing.JMenuItem" binding="menuSavePlaylist">
+                    <constraints/>
+                    <properties>
+                      <text value="Save playlist"/>
+                    </properties>
+                  </component>
+                  <vspacer id="7ae9d">
+                    <constraints/>
+                  </vspacer>
+                  <component id="b97c0" class="javax.swing.JMenuItem" binding="menuExit">
+                    <constraints/>
+                    <properties>
+                      <text value="Exit"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+              <grid id="5b36a" class="javax.swing.JMenu" binding="menuPrefs" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+                <constraints/>
+                <properties>
+                  <background color="-1316626"/>
+                  <foreground color="-16777216"/>
+                  <label value="Service"/>
+                  <text value="Service"/>
+                </properties>
+                <border type="empty"/>
+                <children>
+                  <component id="3b8e" class="javax.swing.JMenuItem" binding="menuSkin1">
+                    <constraints/>
+                    <properties>
+                      <text value="skin1"/>
+                    </properties>
+                  </component>
+                  <component id="e9f63" class="javax.swing.JMenuItem" binding="menuSkin2">
+                    <constraints/>
+                    <properties>
+                      <text value="skin2"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+            </children>
+          </grid>
+        </children>
+      </grid>
+      <grid id="87747" binding="jActionPanel" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+        <constraints border-constraint="South"/>
+        <properties>
+          <background color="-16777216"/>
+          <doubleBuffered value="true"/>
+          <foreground color="-12828863"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <component id="a7680" class="javax.swing.JButton" binding="btnPrevSong">
+            <constraints/>
+            <properties>
+              <background color="-12828863"/>
+              <borderPainted value="false"/>
+              <icon value="com/shamilusoyan/mp3/images/prev-icon.png"/>
+              <label value=""/>
+              <maximumSize width="40" height="40"/>
+              <minimumSize width="40" height="40"/>
+              <preferredSize width="40" height="40"/>
+              <text value=""/>
+            </properties>
+          </component>
+          <component id="8b209" class="javax.swing.JButton" binding="btnPlaySong">
+            <constraints/>
+            <properties>
+              <background color="-12828863"/>
+              <borderPainted value="false"/>
+              <icon value="com/shamilusoyan/mp3/images/Play.png"/>
+              <label value=""/>
+              <maximumSize width="40" height="40"/>
+              <minimumSize width="40" height="40"/>
+              <preferredSize width="40" height="40"/>
+              <text value=""/>
+            </properties>
+          </component>
+          <component id="972dc" class="javax.swing.JButton" binding="btnPauseSong">
+            <constraints/>
+            <properties>
+              <background color="-12828863"/>
+              <borderPainted value="false"/>
+              <icon value="com/shamilusoyan/mp3/images/Pause-icon.png"/>
+              <label value=""/>
+              <maximumSize width="40" height="40"/>
+              <minimumSize width="40" height="40"/>
+              <preferredSize width="40" height="40"/>
+              <text value=""/>
+            </properties>
+          </component>
+          <component id="72be1" class="javax.swing.JButton" binding="btnStopSong">
+            <constraints/>
+            <properties>
+              <background color="-12828863"/>
+              <borderPainted value="false"/>
+              <icon value="com/shamilusoyan/mp3/images/stop-red-icon.png"/>
+              <label value=""/>
+              <maximumSize width="40" height="40"/>
+              <minimumSize width="40" height="40"/>
+              <preferredSize width="40" height="40"/>
+              <text value=""/>
+            </properties>
+          </component>
+          <component id="d6113" class="javax.swing.JButton" binding="btnNextSong">
+            <constraints/>
+            <properties>
+              <background color="-12828863"/>
+              <borderPainted value="false"/>
+              <icon value="com/shamilusoyan/mp3/images/next-icon.png"/>
+              <label value=""/>
+              <maximumSize width="40" height="40"/>
+              <minimumSize width="40" height="40"/>
+              <preferredSize width="40" height="40"/>
+              <text value=""/>
+            </properties>
+          </component>
+          <hspacer id="8b741">
+            <constraints/>
+          </hspacer>
+          <component id="2145e" class="javax.swing.JToggleButton" binding="tglbtnVolume">
+            <constraints/>
+            <properties>
+              <background color="-12828863"/>
+              <borderPainted value="false"/>
+              <icon value="com/shamilusoyan/mp3/images/speaker.png"/>
+              <inheritsPopupMenu value="false"/>
+              <maximumSize width="40" height="40"/>
+              <minimumSize width="40" height="40"/>
+              <preferredSize width="40" height="40"/>
+              <selectedIcon value="com/shamilusoyan/mp3/images/mute.png"/>
+              <text value=""/>
+            </properties>
+          </component>
+          <component id="9c5c7" class="javax.swing.JSlider" binding="slideVolume">
+            <constraints/>
+            <properties>
+              <preferredSize width="100" height="24"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <grid id="e7905" binding="jSearchPanel" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="0">
+        <constraints border-constraint="East"/>
+        <properties>
+          <background color="-16777216"/>
+          <foreground color="-16777216"/>
+          <preferredSize width="185" height="252"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <scrollpane id="bb1b4">
+            <constraints/>
+            <properties>
+              <background color="-263937"/>
+              <maximumSize width="165" height="262"/>
+              <minimumSize width="165" height="262"/>
+              <preferredSize width="165" height="262"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <component id="a1844" class="javax.swing.JList" binding="lstPlayList">
+                <constraints/>
+                <properties>
+                  <background color="-12828863"/>
+                  <foreground color="-11356183"/>
+                  <maximumSize width="155" height="250"/>
+                  <minimumSize width="155" height="250"/>
+                  <model>
+                    <item value="Песня 1"/>
+                    <item value="Песня 2"/>
+                    <item value="Песня 3"/>
+                    <item value="Песня 4"/>
+                    <item value="Песня 5"/>
+                  </model>
+                  <opaque value="true"/>
+                  <preferredSize width="155" height="250"/>
+                  <selectionForeground color="-16777216"/>
+                  <verifyInputWhenFocusTarget value="false"/>
+                </properties>
+              </component>
+            </children>
+          </scrollpane>
+          <component id="b084d" class="javax.swing.JButton" binding="btnAddSong">
+            <constraints/>
+            <properties>
+              <background color="-12828863"/>
+              <borderPainted value="false"/>
+              <icon value="com/shamilusoyan/mp3/images/plus_16.png"/>
+              <inheritsPopupMenu value="false"/>
+              <label value=""/>
+              <opaque value="true"/>
+              <preferredSize width="80" height="30"/>
+              <text value=""/>
+            </properties>
+          </component>
+          <component id="85c88" class="javax.swing.JButton" binding="btnDeleteSong">
+            <constraints/>
+            <properties>
+              <background color="-12698047"/>
+              <borderPainted value="false"/>
+              <foreground color="-12828863"/>
+              <icon value="com/shamilusoyan/mp3/images/remove_icon.png"/>
+              <label value=""/>
+              <opaque value="true"/>
+              <preferredSize width="80" height="30"/>
+              <text value=""/>
+            </properties>
+          </component>
+          <component id="9ea54" class="javax.swing.JButton" binding="btnSelectNext">
+            <constraints/>
+            <properties>
+              <background color="-12828863"/>
+              <borderPainted value="false"/>
+              <icon value="com/shamilusoyan/mp3/images/arrow-up-icon.png"/>
+              <inheritsPopupMenu value="true"/>
+              <label value=""/>
+              <preferredSize width="80" height="30"/>
+              <text value=""/>
+            </properties>
+          </component>
+          <component id="e8276" class="javax.swing.JButton" binding="btnSelectPrev">
+            <constraints/>
+            <properties>
+              <background color="-12828863"/>
+              <borderPainted value="false"/>
+              <icon value="com/shamilusoyan/mp3/images/arrow-down-icon.png"/>
+              <label value=""/>
+              <maximumSize width="80" height="30"/>
+              <minimumSize width="80" height="30"/>
+              <preferredSize width="80" height="30"/>
+              <text value=""/>
+            </properties>
+          </component>
+          <component id="17525" class="javax.swing.JTextField" binding="txtSearch">
+            <constraints/>
+            <properties>
+              <maximumSize width="80" height="30"/>
+              <minimumSize width="80" height="30"/>
+              <preferredSize width="170" height="30"/>
+            </properties>
+          </component>
+          <component id="4b434" class="javax.swing.JButton" binding="btnSearch">
+            <constraints/>
+            <properties>
+              <background color="-12828863"/>
+              <borderPainted value="false"/>
+              <foreground color="-263937"/>
+              <icon value="com/shamilusoyan/mp3/images/search_16.png"/>
+              <label value="Search"/>
+              <preferredSize width="168" height="30"/>
+              <text value="Search"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+    </children>
+  </grid>
+</form>
