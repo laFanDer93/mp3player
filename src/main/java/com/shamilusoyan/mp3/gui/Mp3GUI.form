@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.shamilusoyan.mp3.Mp3GUI">
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.shamilusoyan.mp3.gui.Mp3GUI">
   <grid id="27dc6" binding="panel1" default-binding="true" layout-manager="BorderLayout" hgap="0" vgap="0">
     <constraints>
       <xy x="20" y="20" width="550" height="560"/>
@@ -108,7 +108,6 @@
             <properties>
               <background color="-12828863"/>
               <borderPainted value="false"/>
-              <icon value="com/shamilusoyan/mp3/images/prev-icon.png"/>
               <label value=""/>
               <maximumSize width="40" height="40"/>
               <minimumSize width="40" height="40"/>
@@ -121,7 +120,6 @@
             <properties>
               <background color="-12828863"/>
               <borderPainted value="false"/>
-              <icon value="com/shamilusoyan/mp3/images/Play.png"/>
               <label value=""/>
               <maximumSize width="40" height="40"/>
               <minimumSize width="40" height="40"/>
@@ -134,7 +132,6 @@
             <properties>
               <background color="-12828863"/>
               <borderPainted value="false"/>
-              <icon value="com/shamilusoyan/mp3/images/Pause-icon.png"/>
               <label value=""/>
               <maximumSize width="40" height="40"/>
               <minimumSize width="40" height="40"/>
@@ -147,7 +144,6 @@
             <properties>
               <background color="-12828863"/>
               <borderPainted value="false"/>
-              <icon value="com/shamilusoyan/mp3/images/stop-red-icon.png"/>
               <label value=""/>
               <maximumSize width="40" height="40"/>
               <minimumSize width="40" height="40"/>
@@ -160,7 +156,7 @@
             <properties>
               <background color="-12828863"/>
               <borderPainted value="false"/>
-              <icon value="com/shamilusoyan/mp3/images/next-icon.png"/>
+              <hideActionText value="false"/>
               <label value=""/>
               <maximumSize width="40" height="40"/>
               <minimumSize width="40" height="40"/>
@@ -176,12 +172,10 @@
             <properties>
               <background color="-12828863"/>
               <borderPainted value="false"/>
-              <icon value="com/shamilusoyan/mp3/images/speaker.png"/>
               <inheritsPopupMenu value="false"/>
               <maximumSize width="40" height="40"/>
               <minimumSize width="40" height="40"/>
               <preferredSize width="40" height="40"/>
-              <selectedIcon value="com/shamilusoyan/mp3/images/mute.png"/>
               <text value=""/>
             </properties>
           </component>
@@ -219,13 +213,7 @@
                   <foreground color="-11356183"/>
                   <maximumSize width="155" height="250"/>
                   <minimumSize width="155" height="250"/>
-                  <model>
-                    <item value="Песня 1"/>
-                    <item value="Песня 2"/>
-                    <item value="Песня 3"/>
-                    <item value="Песня 4"/>
-                    <item value="Песня 5"/>
-                  </model>
+                  <model/>
                   <opaque value="true"/>
                   <preferredSize width="155" height="250"/>
                   <selectionForeground color="-16777216"/>
@@ -239,7 +227,7 @@
             <properties>
               <background color="-12828863"/>
               <borderPainted value="false"/>
-              <icon value="com/shamilusoyan/mp3/images/plus_16.png"/>
+              <icon value="images/plus_16.png"/>
               <inheritsPopupMenu value="false"/>
               <label value=""/>
               <opaque value="true"/>
@@ -253,7 +241,7 @@
               <background color="-12698047"/>
               <borderPainted value="false"/>
               <foreground color="-12828863"/>
-              <icon value="com/shamilusoyan/mp3/images/remove_icon.png"/>
+              <icon value="images/remove_icon.png"/>
               <label value=""/>
               <opaque value="true"/>
               <preferredSize width="80" height="30"/>
@@ -265,7 +253,7 @@
             <properties>
               <background color="-12828863"/>
               <borderPainted value="false"/>
-              <icon value="com/shamilusoyan/mp3/images/arrow-up-icon.png"/>
+              <icon value="images/arrow-up-icon.png"/>
               <inheritsPopupMenu value="true"/>
               <label value=""/>
               <preferredSize width="80" height="30"/>
@@ -277,7 +265,7 @@
             <properties>
               <background color="-12828863"/>
               <borderPainted value="false"/>
-              <icon value="com/shamilusoyan/mp3/images/arrow-down-icon.png"/>
+              <icon value="images/arrow-down-icon.png"/>
               <label value=""/>
               <maximumSize width="80" height="30"/>
               <minimumSize width="80" height="30"/>
@@ -299,7 +287,7 @@
               <background color="-12828863"/>
               <borderPainted value="false"/>
               <foreground color="-263937"/>
-              <icon value="com/shamilusoyan/mp3/images/search_16.png"/>
+              <icon value="images/search_16.png"/>
               <label value="Search"/>
               <preferredSize width="168" height="30"/>
               <text value="Search"/>
