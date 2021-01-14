@@ -46,12 +46,14 @@
                   <component id="cd705" class="javax.swing.JMenuItem" binding="menuOpenPlaylist">
                     <constraints/>
                     <properties>
+                      <icon value="images/open-icon.png"/>
                       <label value="Open playlist"/>
                     </properties>
                   </component>
                   <component id="20bbb" class="javax.swing.JMenuItem" binding="menuSavePlaylist">
                     <constraints/>
                     <properties>
+                      <icon value="images/forward.png"/>
                       <text value="Save playlist"/>
                     </properties>
                   </component>
@@ -61,6 +63,7 @@
                   <component id="b97c0" class="javax.swing.JMenuItem" binding="menuExit">
                     <constraints/>
                     <properties>
+                      <icon value="images/exit.png"/>
                       <text value="Exit"/>
                     </properties>
                   </component>
@@ -108,6 +111,7 @@
             <properties>
               <background color="-12828863"/>
               <borderPainted value="false"/>
+              <icon value="images/prev-icon.png"/>
               <label value=""/>
               <maximumSize width="40" height="40"/>
               <minimumSize width="40" height="40"/>
@@ -120,6 +124,7 @@
             <properties>
               <background color="-12828863"/>
               <borderPainted value="false"/>
+              <icon value="images/Play.png"/>
               <label value=""/>
               <maximumSize width="40" height="40"/>
               <minimumSize width="40" height="40"/>
@@ -132,6 +137,7 @@
             <properties>
               <background color="-12828863"/>
               <borderPainted value="false"/>
+              <icon value="images/Pause-icon.png"/>
               <label value=""/>
               <maximumSize width="40" height="40"/>
               <minimumSize width="40" height="40"/>
@@ -144,6 +150,7 @@
             <properties>
               <background color="-12828863"/>
               <borderPainted value="false"/>
+              <icon value="images/stop-red-icon.png"/>
               <label value=""/>
               <maximumSize width="40" height="40"/>
               <minimumSize width="40" height="40"/>
@@ -157,6 +164,7 @@
               <background color="-12828863"/>
               <borderPainted value="false"/>
               <hideActionText value="false"/>
+              <icon value="images/next-icon.png"/>
               <label value=""/>
               <maximumSize width="40" height="40"/>
               <minimumSize width="40" height="40"/>
@@ -172,10 +180,12 @@
             <properties>
               <background color="-12828863"/>
               <borderPainted value="false"/>
+              <icon value="images/speaker.png"/>
               <inheritsPopupMenu value="false"/>
               <maximumSize width="40" height="40"/>
               <minimumSize width="40" height="40"/>
               <preferredSize width="40" height="40"/>
+              <selectedIcon value="images/mute.png"/>
               <text value=""/>
             </properties>
           </component>
@@ -199,10 +209,12 @@
           <scrollpane id="bb1b4">
             <constraints/>
             <properties>
+              <autoscrolls value="true"/>
               <background color="-263937"/>
               <maximumSize width="165" height="262"/>
               <minimumSize width="165" height="262"/>
               <preferredSize width="165" height="262"/>
+              <verticalScrollBarPolicy value="20"/>
             </properties>
             <border type="none"/>
             <children>
@@ -210,6 +222,7 @@
                 <constraints/>
                 <properties>
                   <background color="-12828863"/>
+                  <dragEnabled value="false"/>
                   <foreground color="-11356183"/>
                   <maximumSize width="155" height="250"/>
                   <minimumSize width="155" height="250"/>

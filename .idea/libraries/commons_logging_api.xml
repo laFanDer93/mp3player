@@ -1,0 +1,19 @@
+<component name="libraryTable">
+  <library name="commons-logging-api">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/Desktop/commons-logging-api.jar!/" />
+      <root url="jar://$USER_HOME$/Desktop/jflac-1.2.jar!/" />
+      <root url="jar://$USER_HOME$/Desktop/jl1.0.jar!/" />
+      <root url="jar://$USER_HOME$/Desktop/jmactritonusspi1.74.jar!/" />
+      <root url="jar://$USER_HOME$/Desktop/jogg-0.0.7.jar!/" />
+      <root url="jar://$USER_HOME$/Desktop/jorbis-0.0.15.jar!/" />
+      <root url="jar://$USER_HOME$/Desktop/jspeex0.9.7.jar!/" />
+      <root url="jar://$USER_HOME$/Desktop/kj_dsp1.1.jar!/" />
+      <root url="jar://$USER_HOME$/Desktop/mp3spi1.9.4.jar!/" />
+      <root url="jar://$USER_HOME$/Desktop/tritonus_share.jar!/" />
+      <root url="jar://$USER_HOME$/Desktop/vorbisspi1.0.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

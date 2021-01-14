@@ -1,7 +1,9 @@
-package com.shamilusoyan.mp3;
+package com.shamilusoyan.mp3.objects;
 
+import com.shamilusoyan.mp3.utils.FileUtils;
+
+import javax.swing.*;
 import java.io.Serializable;
-import java.util.List;
 
 public class MP3File implements Serializable {
 
@@ -14,16 +16,15 @@ public class MP3File implements Serializable {
     }
 
 
-    public static MP3File searchByName(String name, List<MP3File> files){
-        for(MP3File MP3File : files){
-            if(MP3File.getName() == name){
-                return MP3File;
-            }
-        }
+    public static MP3File searchByName(String name, DefaultListModel files){
+        for (int i = 0; i<=files.getSize();i++){
+            MP3File mp3File = (MP3File) files.getElementAt(i);
+            if(mp3File.getName() == name){
+                return mp3File;
+        }}
 
         return null;
     }
-
 
     public String getPath() {
         return path;
@@ -43,8 +44,6 @@ public class MP3File implements Serializable {
 
     @Override
     public String toString() {
-        return "FileMP3{" +
-                "name='" + name + '\'' +
-                '}';
+        return FileUtils.getFileNameWithoutExtension(name);
     }
 }

@@ -12,5 +12,17 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Maven: javazoom:jlayer:1.0.1" level="project" />
+    <orderEntry type="library" name="commons-logging-api" level="project" />
+    <orderEntry type="library" name="jflac-1.2" level="project" />
+    <orderEntry type="library" name="basicplayer3.0" level="project" />
+    <orderEntry type="library" name="vorbisspi1.0.2" level="project" />
+    <orderEntry type="library" name="tritonus_share" level="project" />
+    <orderEntry type="library" name="mp3spi1.9.4" level="project" />
+    <orderEntry type="library" name="kj_dsp1.1" level="project" />
+    <orderEntry type="library" name="jspeex0.9.7" level="project" />
+    <orderEntry type="library" name="jorbis-0.0.15" level="project" />
+    <orderEntry type="library" name="jogg-0.0.7" level="project" />
+    <orderEntry type="library" name="jmactritonusspi1.74" level="project" />
+    <orderEntry type="library" name="jl1.0" level="project" />
   </component>
 </module>

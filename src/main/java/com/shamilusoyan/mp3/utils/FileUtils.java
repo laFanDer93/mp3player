@@ -2,6 +2,7 @@ package com.shamilusoyan.mp3.utils;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileFilter;
+import java.awt.font.TextLayout;
 import java.io.*;
 
 public class FileUtils {
@@ -15,12 +16,23 @@ public class FileUtils {
         return "noname";
     }
 
+    public static String getFileExtension(File f){
+        String ext = null;
+        String s = f.getName();
+        int i = s.lastIndexOf(".");
 
-//    public static void addFileFilter(JFileChooser jfc, FileFilter ff){
-//        jfc.removeChoosableFileFilter(jfc.getFileFilter());
-//        jfc.setFileFilter(ff);
-//        jfc.setSelectedFile(new File(""));
-//    }
+        if(i>0&&i<s.length() - 1 ){
+            ext = s.substring(i+1).toLowerCase();
+        }
+        return ext;
+    }
+
+
+    public static void addFileFilter(JFileChooser jfc, FileFilter ff){
+        jfc.removeChoosableFileFilter(jfc.getFileFilter());
+        jfc.setFileFilter(ff);
+        jfc.setSelectedFile(new File(""));
+    }
 
     public static void serialize(Object obj, String fileName){
         FileOutputStream fos;
