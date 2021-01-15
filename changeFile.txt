@@ -1,0 +1,36 @@
+Version (date) 	  | comment			| BUG (which i know)
+---------------------------------------------------------------------------------
+11.01.2021  	  | Simple GUI form 		| 
+		  | 				|
+12.01.2021  	  | Add action button   	| Don't work scroll
+		  | Add list 			| Don't open ".pls" file
+		  | Add icon to button  	|
+		  | Add JFileChooser		| 	
+		  | Add README file		|
+		  | Add menu point    		|
+		  |				|
+13.01.2021	  | Fix save .pls open  	| Don't work scroll
+		  | Add functional to button 	| Don't work Volume slide value
+		  | Add skin changer to menu	| Don't work play button
+		  | Add Volume slide 		| 
+		  | Add search textField	|
+		  |				|
+14.01.2021	  | Add play slide 		| Don't work scroll
+		  | Add song name to center	| Don't work play slide
+		  | Fix work slide volume	|
+		  | Fix work play button	|
+		  |				|
+15.01.2021	  | Fix work play slide		| Don't work play button
+		  | Rewrite OOP style		| Don't work correct play slide 
+		  |				|
+		  |				|
+		  |				|
+		  |				|
+		  |				|
+		  |				|
+		  |				|
+		  |				|
+		  |				|
+		  |				|
+		  |				|
+		  |				|

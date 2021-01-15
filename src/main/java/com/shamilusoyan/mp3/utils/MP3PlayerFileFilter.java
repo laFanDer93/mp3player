@@ -6,8 +6,8 @@ import java.io.File;
 public class MP3PlayerFileFilter extends FileFilter {
 
 
-    private String fileExtension;
-    private String fileDescription;
+    private final String fileExtension;
+    private final String fileDescription;
 
     public MP3PlayerFileFilter(String fileExtension, String fileDescription) {
         this.fileExtension = fileExtension;

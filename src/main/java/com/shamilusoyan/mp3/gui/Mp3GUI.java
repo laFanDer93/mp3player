@@ -1,20 +1,24 @@
 package com.shamilusoyan.mp3.gui;
 
+import com.shamilusoyan.mp3.interfaces.PlayControlListener;
+import com.shamilusoyan.mp3.interfaces.PlayList;
+import com.shamilusoyan.mp3.interfaces.Player;
+import com.shamilusoyan.mp3.interfaces.impl.MP3PlayList;
 import com.shamilusoyan.mp3.objects.MP3File;
-import com.shamilusoyan.mp3.objects.MP3Player;
+import com.shamilusoyan.mp3.interfaces.impl.MP3Player;
 import com.shamilusoyan.mp3.utils.FileUtils;
 import com.shamilusoyan.mp3.utils.MP3PlayerFileFilter;
 import com.shamilusoyan.mp3.utils.SkinUtils;
 
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.plaf.nimbus.NimbusLookAndFeel;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 import java.io.File;
-import java.util.ArrayList;
 
-public class Mp3GUI {
+public class Mp3GUI implements PlayControlListener {
     private JPanel panel1;
     private JPanel jMenuPanel;
     private JMenu menuFile;
@@ -40,30 +44,36 @@ public class Mp3GUI {
     private JMenuItem menuExit;
     private JMenuItem menuSkin1;
     private JMenuItem menuSkin2;
+    private JPanel jInfoPanel;
+    private JLabel txtCurrentMp3;
+    private JSlider slidePlay;
     private JFileChooser fileChooser = new JFileChooser();
     private MP3PlayerFileFilter fileFilter;
     private JFrame frame;
     private DefaultListModel mp3ListModel = new DefaultListModel();
 
-
-    private static final String MP3_FILE_EXTENSION = "mp3";
-    private static final String MP3_FILE_DESCRIPTION = "файлы mp3";
     private static final String PLAYLIST_FILE_EXTENSION = "pls";
     private static final String PLAYLIST_FILE_DESCRIPTION = "файлы плейлиста";
     private static final String EMPTY_STRING = "";
+    private static final String MP3_FILE_EXTENSION = "mp3";
+    private static final String MP3_FILE_DESCRIPTION = "файлы mp3";
     private static final String INPUT_SONG_NAME = "введите имя песни";
 
     private FileFilter mp3FileFilter = new MP3PlayerFileFilter(MP3_FILE_EXTENSION, MP3_FILE_DESCRIPTION);
     private FileFilter playlistFileFilter = new MP3PlayerFileFilter(PLAYLIST_FILE_EXTENSION, PLAYLIST_FILE_DESCRIPTION);
-    private MP3Player player = new MP3Player();
+
+    private int currentVolume;
+    private double posValue = 0.0;
+    private boolean moveAutomatic = true;
+    private PlayList playList;
+    private Player player;
 
     public Mp3GUI() {
-        lstPlayList.setModel(mp3ListModel);
-        lstPlayList.setToolTipText("Список песен");
+
         fileChooser.setMultiSelectionEnabled(true);
-
         frame = new JFrame("MP3Player");
-
+        player = new MP3Player(this);
+        playList = new MP3PlayList(player, lstPlayList, mp3ListModel, slideVolume);
 
         menuSkin1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -82,46 +92,20 @@ public class Mp3GUI {
                 FileUtils.addFileFilter(fileChooser, fileFilter);
                 int result = fileChooser.showOpenDialog(panel1);
                 if (result == JFileChooser.APPROVE_OPTION) {
-
-                    File[] selectedFiles = fileChooser.getSelectedFiles();
-
-                    for (File file : selectedFiles) {
-                        MP3File mp3 = new MP3File(file.getName(), file.getPath());
-                        for(int i = 0; i<= mp3ListModel.getSize()-1; i++){
-                            MP3File mp3File = (MP3File) mp3ListModel.getElementAt(i);
-                            if(mp3File.getName() == mp3.getName()){
-                                return;
-                            }
-                        }
-                        mp3ListModel.addElement(mp3);
-                }
+                    playList.openFiles(fileChooser.getSelectedFiles());
                 }
             }
         });
         btnDeleteSong.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int[] indexPlayList = lstPlayList.getSelectedIndices(); // получаю выбранные индексы(порядковый номер) песен
-                if (indexPlayList.length > 0) {
-                    ArrayList<MP3File> mp3FileListForRemove = new ArrayList<>();
-                    for (int i = 0; i < indexPlayList.length; i++) {
-                        MP3File mp3File = (MP3File) mp3ListModel.getElementAt(indexPlayList[i]);
-                        mp3FileListForRemove.add(mp3File);
-                    }
-
-                    for (MP3File mp3File : mp3FileListForRemove) {
-                        mp3ListModel.removeElement(mp3File);
-                    }
-                }
+                playList.delete();
             }
         });
         btnSelectPrev.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int nextIndex = lstPlayList.getSelectedIndex() + 1;
-                if (nextIndex <= lstPlayList.getModel().getSize() - 1) { //если не вышли за пределы списка
-                    lstPlayList.setSelectedIndex(nextIndex);
-                }
+                playList.prev();
             }
         });
         btnSelectNext.addActionListener(new ActionListener() {
@@ -136,12 +120,7 @@ public class Mp3GUI {
         btnPlaySong.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int[] indexPlayList = lstPlayList.getSelectedIndices();
-                if (indexPlayList.length > 0) {
-                    MP3File mp3File = (MP3File) mp3ListModel.getElementAt(indexPlayList[0]);
-                    player.play(mp3File.getName());
-                    player.setVolume(slideVolume.getValue(),slideVolume.getMaximum());
-                }
+                playList.playFile();
             }
         });
         menuSavePlaylist.addActionListener(new ActionListener() {
@@ -157,7 +136,7 @@ public class Mp3GUI {
                         int resultOvveride = JOptionPane.showConfirmDialog(panel1, "Файл существует", "Перезаписать?", JOptionPane.YES_NO_CANCEL_OPTION);
                         switch (resultOvveride) {
                             case JOptionPane.NO_OPTION:
-                                //todo Написать реализацию, чтобы еще раз вызвался этот метод
+                                menuSavePlaylist.addActionListener(this);
                                 break;
                             case JOptionPane.CANCEL_OPTION:
                                 fileChooser.cancelSelection();
@@ -168,7 +147,7 @@ public class Mp3GUI {
                     String fileExtension = FileUtils.getFileExtension(selectedFile);
 
                     //File's name (нужно ли добавлять расширение к имени файлу при сохранении)
-                    String fileNameForSave = (fileExtension != null && fileExtension.equals(PLAYLIST_FILE_EXTENSION)) ? selectedFile.getPath() : selectedFile.getPath() + "." + PLAYLIST_FILE_EXTENSION;
+                    String fileNameForSave = (fileExtension != null && fileExtension.equals(PLAYLIST_FILE_EXTENSION)) ? selectedFile.getName() : selectedFile.getName() + "." + PLAYLIST_FILE_EXTENSION;
 
                     FileUtils.serialize(mp3ListModel, fileNameForSave);
                 }
@@ -177,57 +156,19 @@ public class Mp3GUI {
         menuOpenPlaylist.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                FileUtils.addFileFilter(fileChooser,playlistFileFilter);
-                int result = fileChooser.showOpenDialog(panel1);
+                FileUtils.addFileFilter(fileChooser, playlistFileFilter);
+                int result = fileChooser.showOpenDialog(panel1);// result хранит результат: выбран файл или нет
 
-                if(result == JFileChooser.APPROVE_OPTION){
-                    File selectedFile = fileChooser.getSelectedFile();
-                    DefaultListModel mp3ListModelOpen = (DefaultListModel) FileUtils.deserialize(selectedFile.getPath());
-                    mp3ListModel = mp3ListModelOpen;
-                    lstPlayList.setModel(mp3ListModel);
+                if (result == JFileChooser.APPROVE_OPTION) {// если нажата клавиша OK или YES
+                    playList.openPlaylist(fileChooser.getSelectedFile());
                 }
+
             }
         });
         btnSearch.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String searchStr = txtSearch.getText();
-                //если в поиске ничего не ввели - выйти из метода и не производить поиск
-                if(searchStr == null || searchStr.trim().equals(EMPTY_STRING)){
-                    return;
-                }
-                //все индексы объектов, найденных п опоиску, будут храниться в коллекции
-                ArrayList<Integer> mp3FindedIndexes = new ArrayList<>();
-
-                //проходим по коллекции и ищем соответсвия имен песен со строкой поиска
-                for (int i = 0; i<mp3ListModel.size();i++){
-                    MP3File mp3File = (MP3File) mp3ListModel.getElementAt(i);
-                    //поиск вхождения строки в название песни без учёта регистра букв
-                    if(mp3File.getName().toUpperCase().contains(searchStr.toUpperCase())){
-                        mp3FindedIndexes.add(i); //найденный индексы добавляем в коллекцию
-                    }
-                }
-
-                //коллекцию индексов сохраняем в массив
-                int[] selectIndexes = new int[mp3FindedIndexes.size()];
-
-                if(selectIndexes.length == 0){  //если не найдено ни одной песни, удовлетворяющей условию поиска
-                    JOptionPane.showMessageDialog(panel1,"Поиск по строке " + searchStr + " не дал результатов");
-                    txtSearch.requestFocus();
-                    txtSearch.selectAll();
-                    return;
-                }
-
-                //преобразовать коллекцию в массив, т.к. метод для выделения строк в JList работает только с массивом
-                for(int i = 0; i<selectIndexes.length; i++){
-                    selectIndexes[i] = mp3FindedIndexes.get(i).intValue();
-                }
-
-
-                //выделить в прейлисте найденные песни по массиву индексов, найденных ранее
-                lstPlayList.setSelectedIndices(selectIndexes);
-
-
+                searchSong();
             }
         });
         btnStopSong.addActionListener(new ActionListener() {
@@ -242,6 +183,73 @@ public class Mp3GUI {
                 player.pause();
             }
         });
+
+        slideVolume.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                if (slideVolume.getValue() == 0) {
+                    player.setVolume(0);
+                    tglbtnVolume.setSelected(true);
+                } else {
+                    player.setVolume(slideVolume.getValue());
+                    tglbtnVolume.setSelected(false);
+                }
+            }
+        });
+        tglbtnVolume.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (tglbtnVolume.isSelected()) {
+                    currentVolume = slideVolume.getValue();
+                    player.setVolume(0);
+                    slideVolume.setValue(0);
+                } else {
+                    slideVolume.setValue(currentVolume);
+                    player.setVolume(slideVolume.getValue());
+                }
+            }
+        });
+
+        slidePlay.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                moveAutomatic = false;
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                posValue = slidePlay.getValue() * 1.0 / 100;
+                player.jump(posValue);
+                moveAutomatic = true;
+            }
+        });
+        btnPrevSong.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                playList.prev();
+            }
+        });
+        btnNextSong.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                playList.next();
+            }
+        });
+        txtSearch.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                int key = e.getKeyCode();
+                if (key == KeyEvent.VK_ENTER) {
+                    playList.search(txtSearch.getText());
+                }
+            }
+        });
+        slidePlay.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                moveAutomatic = false;
+            }
+        });
     }
 
     public void startGui() {
@@ -252,8 +260,36 @@ public class Mp3GUI {
     }
 
     public static void main(String[] args) {
+
         Mp3GUI mp3GUI = new Mp3GUI();
         mp3GUI.startGui();
     }
 
+
+    public void searchSong() {
+        String name = txtSearch.getText().trim();
+        if (!playList.search(name)) {
+            JOptionPane.showMessageDialog(panel1, "Поиск по строке \'" + name + "\' не дал результатов");
+            txtSearch.requestFocus();
+            txtSearch.selectAll();
+        }
+    }
+
+    @Override
+    public void playStarted(String name) {
+        txtCurrentMp3.setText(name);
+    }
+
+    @Override
+    public void processScroll(int position) {
+        if (moveAutomatic) {
+            slidePlay.setValue(position);
+        }
+    }
+
+    @Override
+    public void playFinished() {
+        playList.next();
+    }
 }
+

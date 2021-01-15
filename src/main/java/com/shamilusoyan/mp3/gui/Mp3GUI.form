@@ -308,6 +308,25 @@
           </component>
         </children>
       </grid>
+      <grid id="1e83d" binding="jInfoPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
+        <constraints border-constraint="Center"/>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="4f046" class="javax.swing.JSlider" binding="slidePlay">
+            <constraints border-constraint="South"/>
+            <properties/>
+          </component>
+          <component id="9c354" class="javax.swing.JLabel" binding="txtCurrentMp3">
+            <constraints border-constraint="Center"/>
+            <properties>
+              <horizontalAlignment value="0"/>
+              <requestFocusEnabled value="true"/>
+              <text value="Label"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
     </children>
   </grid>
 </form>

@@ -10,20 +10,9 @@ public class MP3File implements Serializable {
     private String path;
     private String name;
 
-    public MP3File(String path, String name) {
+    public MP3File(String name, String path) {
         this.path = path;
         this.name = name;
-    }
-
-
-    public static MP3File searchByName(String name, DefaultListModel files){
-        for (int i = 0; i<=files.getSize();i++){
-            MP3File mp3File = (MP3File) files.getElementAt(i);
-            if(mp3File.getName() == name){
-                return mp3File;
-        }}
-
-        return null;
     }
 
     public String getPath() {
@@ -45,5 +34,14 @@ public class MP3File implements Serializable {
     @Override
     public String toString() {
         return FileUtils.getFileNameWithoutExtension(name);
+    }
+
+
+
+    @Override
+    public int hashCode() {
+        int result = path != null ? path.hashCode() : 0;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        return result;
     }
 }
