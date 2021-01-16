@@ -36,7 +36,14 @@ public class MP3File implements Serializable {
         return FileUtils.getFileNameWithoutExtension(name);
     }
 
-
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        MP3File mp3File = (MP3File) o;
+        return path.equals(mp3File.path) &&
+                name.equals(mp3File.name);
+    }
 
     @Override
     public int hashCode() {

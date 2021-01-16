@@ -15,6 +15,7 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.plaf.nimbus.NimbusLookAndFeel;
+import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
 
@@ -91,8 +92,12 @@ public class Mp3GUI implements PlayControlListener {
             public void actionPerformed(ActionEvent e) {
                 FileUtils.addFileFilter(fileChooser, fileFilter);
                 int result = fileChooser.showOpenDialog(panel1);
+                File[] files = fileChooser.getSelectedFiles();
                 if (result == JFileChooser.APPROVE_OPTION) {
-                    playList.openFiles(fileChooser.getSelectedFiles());
+                    playList.openFiles(files);
+                }
+                if(mp3ListModel.getSize()>13){
+                    lstPlayList.setPreferredSize(new Dimension(lstPlayList.getWidth(),lstPlayList.getHeight()+(13*files.length)));
                 }
             }
         });
@@ -291,5 +296,7 @@ public class Mp3GUI implements PlayControlListener {
     public void playFinished() {
         playList.next();
     }
+
+
 }
 

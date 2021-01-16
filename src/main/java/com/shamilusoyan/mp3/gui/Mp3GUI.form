@@ -222,15 +222,24 @@
                 <constraints/>
                 <properties>
                   <background color="-12828863"/>
-                  <dragEnabled value="false"/>
+                  <dragEnabled value="true"/>
+                  <enabled value="true"/>
+                  <focusTraversalPolicyProvider value="false"/>
                   <foreground color="-11356183"/>
+                  <layoutOrientation value="0"/>
                   <maximumSize width="155" height="250"/>
                   <minimumSize width="155" height="250"/>
                   <model/>
-                  <opaque value="true"/>
-                  <preferredSize width="155" height="250"/>
+                  <opaque value="false"/>
+                  <preferredSize width="165" height="262"/>
+                  <requestFocusEnabled value="true"/>
+                  <selectedIndex value="-1"/>
+                  <selectionBackground color="-11833681"/>
                   <selectionForeground color="-16777216"/>
+                  <valueIsAdjusting value="false"/>
                   <verifyInputWhenFocusTarget value="false"/>
+                  <visible value="true"/>
+                  <visibleRowCount value="10"/>
                 </properties>
               </component>
             </children>

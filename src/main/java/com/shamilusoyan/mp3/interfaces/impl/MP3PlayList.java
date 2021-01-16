@@ -20,7 +20,7 @@ public class MP3PlayList implements PlayList {
     private Player player;
     private JSlider slideVolume;
     private JList playlist;
-    private DefaultListModel model;
+    private DefaultListModel<MP3File> model;
 
     public MP3PlayList(Player player, JList playlist, DefaultListModel model, JSlider slideVolume) {
         this.playlist = playlist;

@@ -22,11 +22,12 @@ Version (date) 	  | comment			| BUG (which i know)
 		  |				|
 15.01.2021	  | Fix work play slide		| Don't work play button
 		  | Rewrite OOP style		| Don't work correct play slide 
+		  |				| Don't work scroll
 		  |				|
-		  |				|
-		  |				|
-		  |				|
-		  |				|
+16.01.2021	  | Сannot add the same song	|
+		  | Fix play button and slide	| 
+		  | Code refactoring		|
+		  | Fix scroll			|
 		  |				|
 		  |				|
 		  |				|
